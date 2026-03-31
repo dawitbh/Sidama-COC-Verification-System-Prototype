@@ -43,9 +43,11 @@ Admin Dashboard
 
 Comprehensive overview of certificate metrics and system health.
 Public Verification Result
+<img width="942" height="681" alt="image" src="https://github.com/user-attachments/assets/1bb220e6-8346-43db-a70d-43ead83d1d09" />
 
 Clear indicators for Valid vs. Invalid credentials.
 Bulk Import Interface
+<img width="974" height="656" alt="image" src="https://github.com/user-attachments/assets/9434bef0-db5a-4572-bff1-1d533e9d95d0" />
 
 Automated tool for uploading thousands of records simultaneously.
 🔧 Installation & Setup
