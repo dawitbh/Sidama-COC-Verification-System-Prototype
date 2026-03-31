@@ -1,6 +1,8 @@
 Sidama COC Verification System
 
 A web-based prototype designed to digitize and secure the Certificate of Competence (COC) verification process for the Sidama Region, Ethiopia. This project addresses the critical challenges of certificate forgery and the inefficiencies of manual, paper-based verification.
+<img width="1010" height="643" alt="image" src="https://github.com/user-attachments/assets/0c8abdf2-fa81-424c-906c-95e1c77086c3" />
+
 🚀 Key Features
 
     Public Verification Portal: Allows employers and institutions to instantly verify certificate validity using a unique Roll ID.
