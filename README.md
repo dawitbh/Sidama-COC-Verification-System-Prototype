@@ -81,6 +81,3 @@ This prototype was developed as a Master's Thesis at the Czech University of Lif
 
     Department: Information Engineering
 
-📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
