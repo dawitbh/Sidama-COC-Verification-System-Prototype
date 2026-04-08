@@ -1,0 +1,134 @@
+/* style.css - Polished login UI for Sidaama Region COC exam */
+
+:root{
+  --bg-1:#0b5ed7;
+  --bg-2:#3ea0ff;
+  --card-bg:rgba(255,255,255,0.82);
+  --accent:#0b66e3;
+  --muted:rgba(4,38,59,0.68);
+  --radius:20px;
+  --gap:18px;
+  --input-h:56px;
+  --shadow-lg:0 40px 90px rgba(3,37,76,0.18);
+  --glass-border:rgba(255,255,255,0.14);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial; color:#04263b}
+
+/* Page background + subtle blobs */
+.auth-page{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:28px;background:linear-gradient(135deg,var(--bg-2) 0%, var(--bg-1) 60%);position:relative;overflow:hidden}
+.auth-page::before,.auth-page::after{content:'';position:absolute;border-radius:50%;filter:blur(110px);opacity:0.18;pointer-events:none}
+.auth-page::before{width:520px;height:520px;left:-160px;top:-120px;background:rgba(255,255,255,0.18)}
+.auth-page::after{width:380px;height:380px;right:-80px;bottom:-80px;background:rgba(255,255,255,0.06)}
+
+.auth-container{width:100%;max-width:1100px}
+
+/* Glass card */
+.auth-card{display:flex;border-radius:var(--radius);background:var(--card-bg);box-shadow:var(--shadow-lg);overflow:hidden;border:1px solid var(--glass-border);backdrop-filter:blur(8px);transform:translateY(8px);opacity:0;animation:cardIn .6s ease forwards}
+
+@keyframes cardIn{to{transform:none;opacity:1}from{transform:translateY(12px);opacity:0}}
+
+/* Left panel */
+.auth-left{flex:0 0 45%;padding:36px 36px 32px;display:flex;flex-direction:column;gap:var(--gap);background:linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));position:relative}
+.auth-left::after{content:'';position:absolute;right:0;top:0;width:1px;height:100%;background:linear-gradient(180deg, rgba(255,255,255,0.04), rgba(4,38,59,0.02));}
+.left-top{display:flex;flex-direction:column;gap:10px}
+.flags-row{display:flex;gap:0;align-items:center}
+.flags-row img.flag{width:52px;height:34px;border-radius:999px;object-fit:cover;border:2px solid rgba(255,255,255,0.8);box-shadow:0 12px 28px rgba(3,37,76,0.12);transform:translateY(0);transition:transform .28s ease,box-shadow .28s ease}
+.flags-row img.flag:first-child{margin-right:-10px;z-index:2}
+.flag-label{font-size:0.85rem;color:var(--muted);margin-top:6px}
+
+/* small staggered flag entrance */
+.animate .flags-row img.flag{opacity:0;transform:translateY(8px)}
+.animate .flags-row img.flag.flag-left{animation:flagIn .6s cubic-bezier(.2,.9,.2,1) .12s both}
+.animate .flags-row img.flag.flag-right{animation:flagIn .6s cubic-bezier(.2,.9,.2,1) .28s both}
+@keyframes flagIn{from{opacity:0;transform:translateY(10px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+
+/* gentle float */
+@keyframes flagFloat{0%{transform:translateY(0)}50%{transform:translateY(-4px)}100%{transform:translateY(0)}}
+.flags-row img.flag.float{animation:flagFloat 6s ease-in-out infinite}
+
+.brand-title{font-size:1.12rem;font-weight:800;color:#04263b;margin:6px 0 0}
+.brand-sub{font-size:0.95rem;color:var(--muted);margin:0}
+
+/* watermark emblem using CSS radial gradient */
+.auth-left::before{content:'';position:absolute;left:10%;top:40%;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle at 30% 30%, rgba(255,255,255,0.06), rgba(255,255,255,0.02) 30%, transparent 40%);transform:rotate(-12deg);opacity:0.7;pointer-events:none}
+
+/* Bullets */
+.auth-bullets{display:flex;flex-direction:column;gap:12px;margin-top:6px}
+.bullet{display:flex;gap:12px;align-items:flex-start}
+.icon-wrap{width:44px;height:44px;border-radius:10px;background:linear-gradient(180deg,#f7fbff,#eef9ff);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 28px rgba(3,37,76,0.06)}
+.t-title{font-weight:700;color:#04263b}
+.t-sub{font-size:0.92rem;color:var(--muted);margin-top:4px}
+
+.verify-link{display:inline-flex;align-items:center;gap:8px;color:var(--accent);font-weight:600;text-decoration:none;margin-top:12px}
+.verify-link svg{opacity:0.95}
+
+/* Right panel */
+.auth-right{flex:0 0 55%;padding:34px 40px;display:flex;flex-direction:column;gap:12px}
+.auth-right h1{margin:0;font-size:1.6rem;color:#04263b}
+.muted{margin:0;color:var(--muted)}
+
+/* Form */
+.login-form{margin-top:6px;display:flex;flex-direction:column;gap:12px}
+.form-label{font-weight:600;color:#06324a;margin-bottom:6px}
+.input-wrap{position:relative}
+.input-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);display:flex;align-items:center;justify-content:center;color:#05527a;width:44px;height:44px;border-radius:10px;background:linear-gradient(180deg,#eef7ff,#fff);box-shadow:0 6px 18px rgba(3,37,76,0.04);padding-left:6px}
+input[type="text"],input[type="password"]{width:100%;height:var(--input-h);padding:14px 14px 14px 62px;border-radius:12px;border:1px solid rgba(7,48,71,0.06);font-size:1rem;background:rgba(255,255,255,0.98);transition:box-shadow .14s ease,border-color .14s ease}
+input::placeholder{color:rgba(4,38,59,0.45)}
+input:focus{outline:none;box-shadow:0 12px 36px rgba(11,92,215,0.10);border-color:rgba(11,92,215,0.28)}
+.pw-toggle{position:absolute;right:8px;top:50%;transform:translateY(-50%);background:transparent;border:0;padding:8px;border-radius:8px;cursor:pointer;color:var(--muted)}
+
+.btn-primary{height:52px;border-radius:12px;border:0;background:linear-gradient(90deg,var(--accent) 0%,var(--bg-1) 100%);color:#fff;font-weight:800;cursor:pointer;box-shadow:0 18px 46px rgba(11,92,215,0.18);transition:transform .14s ease,box-shadow .14s ease}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 30px 70px rgba(11,92,215,0.2)}
+.btn-primary:focus{outline:3px solid rgba(11,92,215,0.12)}
+
+.forgot-row{display:flex;justify-content:flex-end}
+.forgot-link{color:var(--muted);text-decoration:none}
+
+.divider{display:flex;align-items:center;gap:12px;margin:12px 0}
+.divider::before,.divider::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(255,255,255,0.06),rgba(4,38,59,0.06));position:relative;overflow:hidden}
+.divider::before::after{content:''}
+.divider span{padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.6);font-weight:700;color:var(--muted)}
+
+/* subtle shimmer on divider */
+.divider::before,.divider::after{background:linear-gradient(90deg,rgba(255,255,255,0.02),rgba(255,255,255,0.08),rgba(255,255,255,0.02));}
+
+.btn-social{display:flex;align-items:center;gap:10px;justify-content:center;padding:10px;border-radius:12px;border:1px solid rgba(3,37,76,0.06);background:#fff;color:var(--accent);cursor:pointer}
+.btn-social svg{width:18px;height:18px}
+
+.footer-actions{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
+.link-muted{text-decoration:none;color:var(--muted)}
+.btn-outline{background:transparent;border:1px solid rgba(11,92,215,0.08);padding:8px 14px;border-radius:8px;color:var(--accent);cursor:pointer}
+
+/* footer ticker */
+.auth-footer{margin-top:20px;text-align:center}
+.auth-footer__ticker{display:inline-block;padding:10px 16px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));box-shadow:0 6px 18px rgba(3,37,76,0.04);border:1px solid rgba(255,255,255,0.04)}
+.auth-footer__ticker span{display:inline-block;white-space:nowrap;animation:marquee 18s linear infinite;color:var(--muted);font-weight:600}
+@keyframes marquee{0%{transform:translateX(0)}50%{transform:translateX(-50%)}100%{transform:translateX(0)}}
+@media (prefers-reduced-motion: reduce){.auth-footer__ticker span{animation:none}}
+
+/* Responsive */
+@media (max-width:900px){
+  .auth-card{flex-direction:column;border-radius:14px}
+  .auth-left,.auth-right{flex-basis:auto;padding:20px}
+  .brand-title{font-size:1rem}
+  .flags-row img.flag{width:40px;height:26px}
+}
+
+@media (max-width:460px){
+  .auth-page{padding:12px}
+  input[type="text"],input[type="password"]{height:48px}
+  .auth-right h1{font-size:1.2rem}
+  .auth-left{align-items:center;text-align:center}
+  .auth-bullets{align-items:center}
+  .bullet{justify-content:center}
+  .flags-row{justify-content:center}
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .auth-card{animation:none}
+  .animate .flags-row img.flag, .flags-row img.flag.float{animation:none}
+  .btn-primary:hover{transform:none}
+}
